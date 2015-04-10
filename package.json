@@ -1,0 +1,18 @@
+{
+  "name": "webservice-mock",
+  "description": "Ultra simple key-value based webservice mock",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "4.x.x"
+  },
+  "devDependencies": {
+    "mocha": "2.x.x"
+  },
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha tests/*"
+  },
+  "main": "./src/webservice",
+  "bin": {
+    "webservice-mock": "cli/server.js"
+  }
+}

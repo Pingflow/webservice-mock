@@ -1,0 +1,10 @@
+{
+    "hello": "World",
+    "counter": 7,
+    "truth": true,
+    "tree": {
+        "name": "oak",
+        "branch_count": 53,
+        "inhabitants": ["bird", "squirrel", "bee"]
+    }
+}
