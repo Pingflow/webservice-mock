@@ -1,7 +1,7 @@
 {
   "name": "webservice-mock",
   "description": "Ultra simple key-value based webservice mock",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license" : "MIT",
   "dependencies": {
     "express": "4.x.x"
