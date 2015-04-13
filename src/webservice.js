@@ -9,7 +9,7 @@ var app     = express(),
 var defaultProvider = new DataProvider(),
     verbose = false;
 
-function providerMiddleware(provider, verbose) {
+function providerMiddleware(provider) {
     var router = express.Router();
     
     if (verbose) {
@@ -62,7 +62,7 @@ exports.start = function(port) {
         next();
     });
     
-    app.use(providerMiddleware(defaultProvider, verbose));
+    app.use(providerMiddleware(defaultProvider));
     
     server.listen(port || 3000);
 };
