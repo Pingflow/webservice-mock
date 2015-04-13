@@ -55,6 +55,13 @@ function providerMiddleware(provider, verbose) {
 }
 
 exports.start = function(port) {
+    app.use(function(req, res, next) {
+        res.header('cache-control', 'no-cache');
+        res.header('pragma', 'no-cache');
+        res.header('expires', '0');
+        next();
+    });
+    
     app.use(providerMiddleware(defaultProvider, verbose));
     
     server.listen(port || 3000);
