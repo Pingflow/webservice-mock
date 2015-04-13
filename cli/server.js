@@ -8,7 +8,7 @@ function getOptions() {
     var options = {
         port: 3000,
         verbose: true,
-        sample: false,
+        demo: false,
         files: []
     };
     
@@ -26,8 +26,8 @@ function getOptions() {
                 case '--quiet':
                     options.verbose = false;
                     break;
-                case '--sample':
-                    options.sample = true;
+                case '--demo':
+                    options.demo = true;
                     break;
                 case '--port':
                     options.port = parseInt(parsed[1], 10);
@@ -55,7 +55,7 @@ function loadProviders(files) {
 
 var options = getOptions();
 
-if (options.sample) {
+if (options.demo) {
     webservice.setDefaults();
 }
 
