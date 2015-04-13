@@ -37,7 +37,13 @@ function providerMiddleware(provider, verbose) {
     
     router.get('/functions/:func', function(req, res) {
         res.set({ 'Content-Type': 'application/json' });
-        provider.callMethod(req.params.func, req, res);
+        var result = provider.callMethod(req.params.func, req.query);
+        
+        if (typeof(result) === 'object') {
+            res.send(result);
+        } else {
+            res.send({ value: result });
+        }
     });
     
     router.get('*', function(req, res) {

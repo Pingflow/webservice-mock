@@ -16,8 +16,8 @@ DataProvider.prototype.get = function(key) {
     return this.data.hasOwnProperty(key) ? this.data[key] : undefined;
 };
 
-DataProvider.prototype.callMethod = function(methodName, req, res) {
-    this.methods[methodName].call(this, req, res);
+DataProvider.prototype.callMethod = function(methodName, params) {
+    return this.methods[methodName].call(this, params);
 };
 
 DataProvider.prototype.setDefaults = function() {
