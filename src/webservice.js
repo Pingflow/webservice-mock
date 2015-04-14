@@ -54,9 +54,13 @@ function providerMiddleware(provider) {
         }
     });
     
-    router.get('*', function(req, res) {
+    router.get('/', function(req, res) {
         res.set({ 'Content-Type': 'application/json' });
         res.status(200).send(provider.data);
+    });
+    
+    router.get('*', function(req, res) {
+        res.status(404).send('Not found');
     });
     
     return router;
