@@ -67,8 +67,6 @@ function providerMiddleware(provider) {
 }
 
 exports.start = function(port) {
-    app.use(providerMiddleware(defaultProvider));
-    
     server.listen(port || 3000);
 };
 
@@ -99,8 +97,7 @@ exports.setVerbose = function(verbose) {
     verbose = verbose;
 };
 
-// Deprecated!
-// These functions are in place for backward compatibility reason and might be removed any time
-exports.set = defaultProvider.set.bind(defaultProvider);
-exports.setDefaults = defaultProvider.setDefaults.bind(defaultProvider);
-exports.get = defaultProvider.get.bind(defaultProvider);
+exports.setDefaults = function () {
+    exports.loadProvider(__dirname + '/demo.json');
+};
+

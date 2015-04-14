@@ -20,8 +20,4 @@ DataProvider.prototype.callMethod = function(methodName, params) {
     return this.methods[methodName].call(this, params);
 };
 
-DataProvider.prototype.setDefaults = function() {
-    this.data = require(__dirname + '/default_data.json');
-};
-
 module.exports = DataProvider;
