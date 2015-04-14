@@ -5,7 +5,7 @@ Webservice-mock
 
 [![npm version](https://badge.fury.io/js/webservice-mock.svg)](http://badge.fury.io/js/webservice-mock)
 
-Use it as a convenient webservice utility
+Use it as a command line tool
 -----------------------------------------
 
 You can install it with npm and serve content of a json file right away
@@ -26,6 +26,25 @@ You can also get a specific value in your tree using `/get` route:
 
 ### More command line options
 
-* `--port=PORT`: choose which port/socket to listen to
-* `--demo`: load sample data
+* `--port=PORT`: choose which port/socket to listen to (default 3000)
+* `--demo`: load sample data at /demo
 * `--quiet`: Prevent the server to log every http request
+
+Use it from your node js code
+----------------------------
+
+```javascript
+var mock = require('webservice-mock');
+
+// Load sample data
+mock.setDefaults();
+
+// Enable requests logging (disabled by default when using programmatically)
+mock.setVerbose(true);
+
+// Start the server
+mock.start(1337);
+
+// You can also load data after server start
+mock.loadProvider('/my/dataset.json');
+```
