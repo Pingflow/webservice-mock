@@ -9,6 +9,14 @@ var app     = express(),
 var defaultProvider = new DataProvider(),
     verbose = false;
 
+// Prevent caching of data
+app.use(function(req, res, next) {
+    res.header('cache-control', 'no-cache');
+    res.header('pragma', 'no-cache');
+    res.header('expires', '0');
+    next();
+});
+    
 function providerMiddleware(provider) {
     var router = express.Router();
     
@@ -55,13 +63,6 @@ function providerMiddleware(provider) {
 }
 
 exports.start = function(port) {
-    app.use(function(req, res, next) {
-        res.header('cache-control', 'no-cache');
-        res.header('pragma', 'no-cache');
-        res.header('expires', '0');
-        next();
-    });
-    
     app.use(providerMiddleware(defaultProvider));
     
     server.listen(port || 3000);
