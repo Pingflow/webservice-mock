@@ -1,7 +1,12 @@
 {
   "name": "webservice-mock",
   "description": "Ultra simple key-value based webservice mock",
-  "version": "0.3.0",
+  "homepage": "https://github.com/Pingflow/webservice-mock",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/Pingflow/webservice-mock.git"
+  },
+  "version": "0.3.2",
   "license" : "MIT",
   "dependencies": {
     "express": "4.x.x"
