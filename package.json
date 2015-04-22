@@ -6,7 +6,7 @@
       "type": "git",
       "url": "https://github.com/Pingflow/webservice-mock.git"
   },
-  "version": "0.3.2",
+  "version": "0.4.0",
   "license" : "MIT",
   "dependencies": {
     "express": "4.x.x"
