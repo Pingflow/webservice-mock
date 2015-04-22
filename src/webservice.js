@@ -7,7 +7,8 @@ var app     = express(),
     server  = http.createServer(app);
     
 var defaultProvider = new DataProvider(),
-    verbose = false;
+    verbose = false,
+    mountedPoints = [];
 
 // Prevent caching of data
 app.use(function(req, res, next) {
@@ -15,6 +16,13 @@ app.use(function(req, res, next) {
     res.header('pragma', 'no-cache');
     res.header('expires', '0');
     next();
+});
+
+app.get('/', function(req, res, next) {
+    res.set({ 'Content-Type': 'application/json' });
+    res.status(200).send({ routes: mountedPoints.map(function(point) { 
+        return { route: point, full_url: req.protocol + '://' + req.get('host') + point };
+    }) });
 });
     
 function providerMiddleware(provider) {
@@ -90,6 +98,9 @@ exports.loadProvider = function(filePath) {
 };
 
 exports.addProvider = function(mountPoint, provider) {
+    if (mountedPoints.indexOf(mountPoint) < 0) {
+        mountedPoints.push(mountPoint);
+    }
     app.use(mountPoint, providerMiddleware(provider));
 };
 
